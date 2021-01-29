@@ -10,19 +10,19 @@ class deltaDB:
 		self.table = 'main'
 
 	def set_table(self, name):
-		if self.tables[name] == None:
+		if self.tables[name] == None or type(name) != str:
 			return 1
 		else:
 			self.table = name
 
 	def create_table(self, name):
-		if not name:
+		if not name or type(name) != str:
 			return 1
 		else:
 			self.tables[name] = {}
 
 	def set(self, name, value):
-		if not name:
+		if not name or type(name) != str:
 			return 1
 		else:
 			self.tables[self.table][name] = value
