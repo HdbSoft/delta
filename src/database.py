@@ -16,4 +16,22 @@ class deltaDB:
 			self.table = name
 
 	def create_table(self, name):
-		self.tables[name] = {}
+		if not name:
+			return 1
+		else:
+			self.tables[name] = {}
+
+	def set(self, name, value):
+		if not name:
+			return 1
+		else:
+			self.tables[self.table][name] = value
+
+	def select(self, name):
+		output = None
+		try:
+			output = self.tables[self.table][name]
+		except KeyError:
+			print (f'deltaDB: in table {self.table}, property {name} does not exist')
+			return
+		return output
